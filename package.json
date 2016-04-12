@@ -1,0 +1,14 @@
+{
+  "name": "simple-physics-engine",
+  "version": "0.0.1",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jussiholtta/physics.git"
+  },
+  "devDependencies": {
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-jasmine": "^0.3.8"
+  }
+}

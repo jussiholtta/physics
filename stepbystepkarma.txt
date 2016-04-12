@@ -1,0 +1,60 @@
+#gathered the steps needed to set up dev env, possibly missing some steps. not intended to be comprehensive documentation.
+
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
+nvm install 5.0
+nvm use 5.0
+nvm run 5.0 --version
+nvm alias default node
+nvm install 5.9
+echo "5.9" > .nvmrc
+nvm use
+
+.bashrc
+[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+
+npm install karma --save-dev
+npm install karma-jasmine karma-chrome-launcher --save-dev
+
+// ./node_modules/karma/bin/karma start
+npm install -g karma-cli
+
+
+jussiholtta@MacBook-Air-2:~/github/physics $ karma init physics.conf.js
+
+Which testing framework do you want to use ?
+Press tab to list possible options. Enter to move to the next question.
+> jasmine
+
+Do you want to use Require.js ?
+This will add Require.js plugin.
+Press tab to list possible options. Enter to move to the next question.
+> no
+
+Do you want to capture any browsers automatically ?
+Press tab to list possible options. Enter empty string to move to the next question.
+> Chrome
+> 
+
+What is the location of your source and test files ?
+You can use glob patterns, eg. "js/*.js" or "test/**/*Spec.js".
+Enter empty string to move to the next question.
+> js/*.js
+12 04 2016 13:50:13.663:WARN [init]: There is no file matching this pattern.
+
+> test/**/*Spec.js
+12 04 2016 13:50:19.745:WARN [init]: There is no file matching this pattern.
+
+> 
+
+Should any of the files included by the previous patterns be excluded ?
+You can use glob patterns, eg. "**/*.swp".
+Enter empty string to move to the next question.
+> 
+
+Do you want Karma to watch all the files and run the tests on change ?
+Press tab to list possible options.
+> yes
+
+
+
+karma start physics.conf.js --log-level debug --single-run
