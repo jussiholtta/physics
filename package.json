@@ -6,9 +6,13 @@
     "type": "git",
     "url": "https://github.com/jussiholtta/physics.git"
   },
+  "scripts": {
+    "test": "karma start physics.conf.js"
+  },
   "devDependencies": {
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^0.2.3",
-    "karma-jasmine": "^0.3.8"
+    "karma-jasmine": "^0.3.8",
+    "karma-phantomjs-launcher": "^1.0.0"
   }
 }
