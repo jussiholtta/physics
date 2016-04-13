@@ -1,13 +1,10 @@
-if (typeof NS == 'undefined') { NS = {}; }
+function PPoint(x,y,z) {
+  this.x = x;
+  this.y = y;
+  this.z = z;
+}
 
-NS.PPoint = {
-location: [],
-       
-       init: function init() {
-       },
-reset: function reset() {
-         this.location = [];
-       },
-};
+PPoint.prototype.distance = function(p) {
+  return Math.sqrt(Math.pow(this.x-p.x,2) + Math.pow(this.y-p.y,2) + Math.pow(this.z-p.z,2))
+}
 
-NS.PPoint.init();
