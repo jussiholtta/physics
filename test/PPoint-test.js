@@ -1,6 +1,8 @@
-describe("pPoint", function() {
-    var point = new PPoint(0,0,0);
-    var point2 = new PPoint(0,0,0);
+var physicsApp = physicsApp || {}
+
+describe("physicsApp.Point", function() {
+    var point = new physicsApp.Point(0,0,0);
+    var point2 = new physicsApp.Point(0,0,0);
 
     beforeEach(function(){
       });
