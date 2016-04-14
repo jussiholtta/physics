@@ -1,8 +1,8 @@
 var physicsApp = physicsApp || {}
-
+ 
 describe("physicsApp.Point", function() {
-    var point = new physicsApp.Point(0,0,0);
-    var point2 = new physicsApp.Point(0,0,0);
+    var point = new physicsApp.Point(1,2,3);
+    var point2 = new physicsApp.Point(1,2,3);
 
     beforeEach(function(){
       });
