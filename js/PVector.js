@@ -7,7 +7,7 @@ physicsApp.Vector = function(a,b,c) {
 };
 
 physicsApp.Vector.prototype.length = function() {
-  return Math.sqrt(Math.pow(this.a,2) + Math.pow(this.b,2) + Math.pow(this.b,2));
+  return Math.sqrt(Math.pow(this.a,2) + Math.pow(this.b,2) + Math.pow(this.c,2));
 }
 
 physicsApp.Vector.prototype.unit = function() {

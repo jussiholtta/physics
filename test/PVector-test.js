@@ -40,9 +40,10 @@ describe("physicsApp.PVector", function() {
         });
 
     //test double accuracy too, may need epsilon thingie
-    //it("should calculate length with sufficient accuracy", function() {
-    //  expect(vector
-    //});
+    it("should calculate length with reasonable accuracy", function() {
+      var v = new physicsApp.Vector(2,2,0.5);
+      expect(v.length()).toEqual(Math.sqrt(8.25));
+    });
 
     it("should be able to sum 2 vectors", function() {
         var sumVector = vector.plus(vector2);

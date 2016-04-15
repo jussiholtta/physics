@@ -41,7 +41,5 @@ describe("physicsApp.PEntity", function() {
       expect(angledEntity.position.distance(p)).toBeLessThan(0.0000000001);
       expect(angledEntity.position).toEqual(p); //why did this work now?
       });
-    
-    //it("", function() {
-    //});
+      
 });

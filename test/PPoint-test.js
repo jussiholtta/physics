@@ -44,8 +44,6 @@ describe("physicsApp.Point", function() {
       expect( function(){ point.plus(point); } ).toThrow(new Error("No, no, no! Don't add points together!"));
       });
 
-//it("", function() {
-    //});
 });
 
 
