@@ -36,6 +36,7 @@ describe("physicsApp.Point", function() {
         point2.z = 4
         expect(point.distance(point2)).toEqual(Math.sqrt(3));
         });
+
     it("should be able to move a point by adding a vector", function() {
         expect(point.plus(vector)).toEqual(new physicsApp.Point(2,4,6));
         });

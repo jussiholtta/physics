@@ -78,6 +78,16 @@ describe("physicsApp.PVector", function() {
         expect(iv.product(iv)).toEqual(new physicsApp.Vector(0,0,0));
       });
 
+    it("should be able to calculate fractional products with reasonable accuracy", function() {
+      var fv = new physicsApp.Vector(0.5,0.5,0.5);
+      var fv2 = new physicsApp.Vector(-1/2,1/4,1/3);
+      var expectedProduct = new physicsApp.Vector(1/24,-5/12,3/8);
+      var product = fv.product(fv2);
+      expect(Math.abs(product.a-expectedProduct.a)).toBeLessThan(physicsApp.epsilon)
+      expect(Math.abs(product.b-expectedProduct.b)).toBeLessThan(physicsApp.epsilon)
+      expect(Math.abs(product.c-expectedProduct.c)).toBeLessThan(physicsApp.epsilon)
+      });
+
     it("should be able to get unit vector for longer vector", function() {
         var l = vector.length();
         expect(vector.unit()).toEqual(new physicsApp.Vector(1/l,2/l,2/l));
@@ -87,6 +97,4 @@ describe("physicsApp.PVector", function() {
       expect(vector.scale(2)).toEqual(new physicsApp.Vector(2,4,4));
     });
     
-    //it("", function() {
-    //});
 });
