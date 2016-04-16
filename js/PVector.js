@@ -1,6 +1,7 @@
 var physicsApp = physicsApp || {}
 
 physicsApp.Vector = function(a,b,c) {
+  if(arguments.length === 0) return;
   this.a = physicsApp.epsilonCheck(a);
   this.b = physicsApp.epsilonCheck(b);
   this.c = physicsApp.epsilonCheck(c);
@@ -34,5 +35,27 @@ physicsApp.Vector.prototype.product = function(v) {
 
 physicsApp.Vector.prototype.scale = function(s) {
   return new physicsApp.Vector(this.a*s, this.b*s, this.c*s);
+}
+
+
+/*
+* Gravity
+*/
+
+physicsApp.Gravity = function() {
+  physicsApp.Vector.call(this, 0, 0, 0); 
+};
+
+physicsApp.Gravity.prototype = new physicsApp.Vector();
+physicsApp.Gravity.prototype.constructor = physicsApp.Gravity;
+
+physicsApp.Gravity.prototype.length = function() {
+  return physicsApp.Vector.prototype.length.call(this);
+}
+
+physicsApp.Gravity.prototype.reset = function() {
+  this.a = 0;
+  this.b = 0;
+  this.c = 0;
 }
 
