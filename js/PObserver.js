@@ -1,7 +1,7 @@
 var physicsApp = physicsApp || {}
 
 physicsApp.Observer = function(x,y,z,pitch,yaw) {
-  physicsApp.Entity.call(this, x, y, z, 0, 0, 1, physicsApp.OBSERVER_DEFAULT_SPEED)
+  physicsApp.Entity.apply(this, arguments);
   //save originals for reset
   this.ORIGINAL_PITCH = pitch;
   this.ORIGINAL_YAW = yaw;
@@ -10,24 +10,29 @@ physicsApp.Observer = function(x,y,z,pitch,yaw) {
 
 };
 
+physicsApp.Observer.prototype = new physicsApp.Entity();
+physicsApp.Observer.prototype.constructor = physicsApp.Observer;
+
 physicsApp.Observer.prototype.reset = function() {
-  var f = new physicsApp.Vector(0,0,1);
-  var u = new physicsApp.Vector(0,1,0);
-  var r = new physicsApp.Vector(-1,0,0);
-  this.forward = f.scale(physicsApp.OBSERVER_DEFAULT_SPEED);
-  this.up = u.scale(physicsApp.OBSERVER_DEFAULT_SPEED);
-  this.right = r.scale(physicsApp.OBSERVER_DEFAULT_SPEED);
+  this.forward = new physicsApp.Vector(0,0,1);
+  this.up = new physicsApp.Vector(0,1,0);
+  this.right = new physicsApp.Vector(-1,0,0);
   this.pitch(this.ORIGINAL_PITCH);
   this.yaw(this.ORIGINAL_YAW);
 };
 
 physicsApp.Observer.prototype.pitch = function(angle) {
-  this.forward = this.forward.scale(Math.cos(angle)).plus(this.up.scale(Math.sin(angle)));
+  var m = this.forward.scale(Math.cos(angle)).plus(this.up.scale(Math.sin(angle)));
+  this.forward = m.unit();
   this.up = this.right.product(this.forward);
 }
 
 physicsApp.Observer.prototype.yaw = function(angle) {
-  this.forward = this.forward.scale(Math.cos(angle)).plus(this.right.scale(Math.sin(angle))).unit().scale(physicsApp.OBSERVER_DEFAULT_SPEED);
-  this.right = this.forward.product(this.up); 
+  var m = this.forward.scale(Math.cos(angle)).plus(this.right.scale(Math.sin(angle)));
+  this.forward = m.unit();
+  this.right = this.forward.product(this.up);
 }
 
+physicsApp.Observer.prototype.pitchUp = function() {
+  this.pitch(physicsApp.ANGLE_STEP);
+}

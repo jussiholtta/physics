@@ -38,7 +38,7 @@ describe("physicsApp.PEntity", function() {
           y = -5*2,
           z = -10-5*2;
       p = new physicsApp.Point(x,y,z);
-      expect(angledEntity.position.distance(p)).toBeLessThan(physicsApp.epsilon);
+      expect(angledEntity.position.distance(p)).toBeLessThan(testHelper.epsilon);
       });
       
 });

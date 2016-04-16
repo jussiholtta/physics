@@ -39,7 +39,6 @@ describe("physicsApp.PVector", function() {
         expect(vector.length()).toEqual(3);
         });
 
-    //test double accuracy too, may need epsilon thingie
     it("should calculate length with reasonable accuracy", function() {
       var v = new physicsApp.Vector(2,2,0.5);
       expect(v.length()).toEqual(Math.sqrt(8.25));
@@ -83,9 +82,7 @@ describe("physicsApp.PVector", function() {
       var fv2 = new physicsApp.Vector(-1/2,1/4,1/3);
       var expectedProduct = new physicsApp.Vector(1/24,-5/12,3/8);
       var product = fv.product(fv2);
-      expect(Math.abs(product.a-expectedProduct.a)).toBeLessThan(physicsApp.epsilon)
-      expect(Math.abs(product.b-expectedProduct.b)).toBeLessThan(physicsApp.epsilon)
-      expect(Math.abs(product.c-expectedProduct.c)).toBeLessThan(physicsApp.epsilon)
+      testHelper.expectVectorToAlmostEqual(product,expectedProduct);
       });
 
     it("should be able to get unit vector for longer vector", function() {
