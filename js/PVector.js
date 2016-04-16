@@ -12,6 +12,9 @@ physicsApp.Vector.prototype.length = function() {
 
 physicsApp.Vector.prototype.unit = function() {
   var l = this.length();
+  if(l == 0) {
+    return new physicsApp.Vector(0,0,0);
+  }
   return new physicsApp.Vector(this.a/l, this.b/l, this.c/l);
 }
 

@@ -1,7 +1,7 @@
 var physicsApp = physicsApp || {}
 
 physicsApp.Observer = function(x,y,z,pitch,yaw) {
-  physicsApp.Entity.apply(this, arguments);
+  physicsApp.Entity.call(this, x, y, z, 0, 0, 0, physicsApp.OBSERVER_DEFAULT_SPEED);
   //save originals for reset
   this.ORIGINAL_PITCH = pitch;
   this.ORIGINAL_YAW = yaw;
@@ -12,6 +12,15 @@ physicsApp.Observer = function(x,y,z,pitch,yaw) {
 
 physicsApp.Observer.prototype = new physicsApp.Entity();
 physicsApp.Observer.prototype.constructor = physicsApp.Observer;
+
+physicsApp.Observer.prototype.moveForward = function() {
+  physicsApp.Entity.prototype.moveForward.call(this);
+}
+
+physicsApp.Observer.prototype.moveBackwards = function() {
+  physicsApp.Entity.prototype.moveBackwards.call(this);
+}
+
 
 physicsApp.Observer.prototype.reset = function() {
   this.forward = new physicsApp.Vector(0,0,1);
@@ -35,4 +44,16 @@ physicsApp.Observer.prototype.yaw = function(angle) {
 
 physicsApp.Observer.prototype.pitchUp = function() {
   this.pitch(physicsApp.ANGLE_STEP);
+}
+
+physicsApp.Observer.prototype.pitchDown = function() {
+  this.pitch(-physicsApp.ANGLE_STEP);
+}
+
+physicsApp.Observer.prototype.yawLeft = function() {
+  this.yaw(-physicsApp.ANGLE_STEP);
+}
+
+physicsApp.Observer.prototype.yawRight = function() {
+  this.yaw(physicsApp.ANGLE_STEP);
 }
