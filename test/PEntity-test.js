@@ -9,27 +9,27 @@ describe("physicsApp.PEntity", function() {
       angledEntity = new physicsApp.Entity(1/3,0,-10.0,-Math.sqrt(1/2), 0.5, 0.5, 10);
       });
 
-    it("should match equal entitys", function() {
+    it("matches equal entitys", function() {
         expect(entity).toEqual(new physicsApp.Entity(0,0,-10,0,0,1,10));
         });
 
-    it("shouldn't match unequal entitys", function() {
+    it("doesn't match unequal entitys", function() {
         expect(entity).not.toEqual(new physicsApp.Entity(1,2,3,4,5,6,7,8,9));
         });
 
-    it("should be able to move forward", function() {
+    it("is able to move forward", function() {
       entity.moveForward();
       p = new physicsApp.Point(0,0,0);
       expect(entity.position).toEqual(p);
     });
     
-    it("should be able to move backwards", function() {
+    it("is able to move backwards", function() {
       entity.moveBackwards();
       p = new physicsApp.Point(0,0,-20);
       expect(entity.position).toEqual(p);
     });
 
-    it("should be able to calculate position with reasonable accuracy", function() {
+    it("is able to calculate position with reasonable accuracy", function() {
       angledEntity.moveBackwards();
       angledEntity.moveForward();
       angledEntity.moveBackwards();
