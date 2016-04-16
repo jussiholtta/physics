@@ -3,8 +3,8 @@ var physicsApp = physicsApp || {}
 physicsApp.Observer = function(x,y,z,pitch,yaw) {
   physicsApp.Entity.call(this, x, y, z, 0, 0, 0, physicsApp.OBSERVER_DEFAULT_SPEED);
   //save originals for reset
-  this.ORIGINAL_PITCH = pitch;
-  this.ORIGINAL_YAW = yaw;
+  this.ORIGINAL_PITCH = physicsApp.epsilonCheck(pitch);
+  this.ORIGINAL_YAW = physicsApp.epsilonCheck(yaw);
   this.ORIGINAL_POSITION = new physicsApp.Point(x,y,z);
   this.reset(); 
 

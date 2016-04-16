@@ -1,9 +1,15 @@
 var physicsApp = physicsApp || {}
 
+//Helper function to deal with float inaccuracy drift
+physicsApp.epsilonCheck = function(a) {
+  if (Math.abs(a) < 1e-14)
+    return 0;
+  return Math.floor(a*1e100)/1e100;
+}
+
 /**
  * Generally used constants
  */
-
 physicsApp.FULL_CIRCLE = 2.0*Math.PI;
 physicsApp.HALF_CIRCLE = Math.PI;
 physicsApp.QUARTER_CIRCLE = Math.PI/2.0;

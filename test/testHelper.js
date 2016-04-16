@@ -1,6 +1,6 @@
 var testHelper = testHelper || {}
 
-testHelper.epsilon = 1e-12 //temporarily changed to lower tolerance, need to fix drift
+testHelper.epsilon = 1e-13 //temporarily changed to lower tolerance, need to fix drift
 
 testHelper.expectVectorToAlmostEqual = function(f1, f2) { 
   expect(Math.abs(f1.a-f2.a)).toBeLessThan(testHelper.epsilon);

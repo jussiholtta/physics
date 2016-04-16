@@ -1,13 +1,14 @@
 var physicsApp = physicsApp || {}
 
 physicsApp.Vector = function(a,b,c) {
-  this.a = a;
-  this.b = b;
-  this.c = c;
+  this.a = physicsApp.epsilonCheck(a);
+  this.b = physicsApp.epsilonCheck(b);
+  this.c = physicsApp.epsilonCheck(c);
 };
 
 physicsApp.Vector.prototype.length = function() {
-  return Math.sqrt(Math.pow(this.a,2) + Math.pow(this.b,2) + Math.pow(this.c,2));
+  var l = Math.sqrt(Math.pow(this.a,2) + Math.pow(this.b,2) + Math.pow(this.c,2));
+  return physicsApp.epsilonCheck(l);
 }
 
 physicsApp.Vector.prototype.unit = function() {
