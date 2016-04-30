@@ -59,3 +59,14 @@ physicsApp.Gravity.prototype.reset = function() {
   this.c = 0;
 }
 
+//Not using GRAVITATIONAL_CONSTANT yet as it's irrelevant if no other forces exist
+physicsApp.Gravity.prototype.add = function(p1,m1,p2,m2) {
+  var distance = p1.distance(p2);
+  var magnitude = (m1*m2)/(distance*distance);
+  var v = new physicsApp.Vector(p2.x-p1.x, p2.y-p1.y, p2.z-p1.z);
+  var force = v.unit().scale(magnitude);
+  this.a = this.a + force.a;
+  this.b = this.b + force.b;
+  this.c = this.c + force.c;
+}
+
