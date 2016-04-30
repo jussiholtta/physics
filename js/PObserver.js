@@ -1,8 +1,11 @@
 var physicsApp = physicsApp || {}
 
 physicsApp.Observer = function(x,y,z,pitch,yaw) {
-  physicsApp.Entity.call(this, x, y, z, 0, 0, 1, physicsApp.OBSERVER_DEFAULT_SPEED);
-  this.speed = physicsApp.OBSERVER_DEFAULT_SPEED; //fix this kludge, observer has special speed handling because pitch&yaw requires unit vectors for sensible calculations
+  physicsApp.Entity.call(this, x, y, z, 0, 0, 1);
+  
+  //observer uses unit vectors for directions to simplify pitch&yaw, so speed is handled as a scalar instead of embedding to the forward vector
+  this.speed = physicsApp.OBSERVER_DEFAULT_SPEED;
+
   //save originals for reset
   this.ORIGINAL_PITCH = physicsApp.epsilonCheck(pitch);
   this.ORIGINAL_YAW = physicsApp.epsilonCheck(yaw);

@@ -1,10 +1,10 @@
 var physicsApp = physicsApp || {}
 
 describe("physicsApp.SimpleMassObject", function() {
-    var simpleMassObject = new physicsApp.SimpleMassObject(0,0,-10,0,0,1,0,1);
+    var simpleMassObject = new physicsApp.SimpleMassObject(0,0,-10,0,0,0,1);
 
     afterEach(function() {
-      simpleMassObject = new physicsApp.SimpleMassObject(0,0,-10,0,0,1,0,1);
+      simpleMassObject = new physicsApp.SimpleMassObject(0,0,-10,0,0,0,1);
       });
 
     it("initializes in simple case correctly", function() {
@@ -15,7 +15,7 @@ describe("physicsApp.SimpleMassObject", function() {
       });
 
     it("is affected by a second mass object", function() {
-      var smo2 = new physicsApp.SimpleMassObject(0,0,0,0,0,1,0,1);
+      var smo2 = new physicsApp.SimpleMassObject(0,0,0,0,0,1,1);
       simpleMassObject.applyForce(smo2);
       var expectedGravity = new physicsApp.Gravity();
       expectedGravity.a = 0;
@@ -34,7 +34,7 @@ describe("physicsApp.SimpleMassObject", function() {
     });
 
     it("moves if affected by force when time ticks forward", function() {
-      var smo2 = new physicsApp.SimpleMassObject(0,0,0,0,0,1,0,100);
+      var smo2 = new physicsApp.SimpleMassObject(0,0,0,0,0,1,100);
       simpleMassObject.applyForce(smo2);
       simpleMassObject.tickForward(1);
       var expectedPosition = new physicsApp.Point(0,0,-9.5);

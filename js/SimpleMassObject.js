@@ -1,7 +1,7 @@
 var physicsApp = physicsApp || {}
 
-physicsApp.SimpleMassObject = function(x,y,z,a,b,c,s,m) {
-  physicsApp.Entity.call(this, x, y, z, a, b, c, s);
+physicsApp.SimpleMassObject = function(x,y,z,a,b,c,m) {
+  physicsApp.Entity.call(this, x, y, z, a, b, c);
   this.mass = m;
   this.gravity = new physicsApp.Gravity();
 };

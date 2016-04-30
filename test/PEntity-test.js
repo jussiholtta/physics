@@ -1,20 +1,20 @@
 var physicsApp = physicsApp || {}
 
 describe("physicsApp.PEntity", function() {
-    var entity = new physicsApp.Entity(0,0,-10,0,0,1, 10);
-    var angledEntity = new physicsApp.Entity(1/3,0,-10.0,-Math.sqrt(1/2), 0.5, 0.5, 10);
+    var entity = new physicsApp.Entity(0,0,-10,0,0,10);
+    var angledEntity = new physicsApp.Entity(1/3,0,-10.0,-Math.sqrt(1/2)*10, 0.5*10, 0.5*10);
 
     afterEach(function() {
-      entity = new physicsApp.Entity(0,0,-10,0,0,1, 10);
-      angledEntity = new physicsApp.Entity(1/3,0,-10.0,-Math.sqrt(1/2), 0.5, 0.5, 10);
+      entity = new physicsApp.Entity(0,0,-10,0,0,10);
+      angledEntity = new physicsApp.Entity(1/3,0,-10.0,-Math.sqrt(1/2)*10, 0.5*10, 0.5*10);
       });
 
     it("matches equal entitys", function() {
-        expect(entity).toEqual(new physicsApp.Entity(0,0,-10,0,0,1,10));
+        expect(entity).toEqual(new physicsApp.Entity(0,0,-10,0,0,10));
         });
 
     it("doesn't match unequal entitys", function() {
-        expect(entity).not.toEqual(new physicsApp.Entity(1,2,3,4,5,6,7,8,9));
+        expect(entity).not.toEqual(new physicsApp.Entity(1,2,3,4,5,6,7,8));
         });
 
     it("is able to move forward", function() {
