@@ -19,14 +19,15 @@ physicsApp.SimpleMassObject.prototype.moveBackwards = function() {
 
 physicsApp.SimpleMassObject.prototype.applyForce = function(o) {
   if( o instanceof physicsApp.SimpleMassObject) {
-    this.gravity.add(this.position,this.mass,o.position,o.mass);
+    var g = this.gravity.calculate(this.position,this.mass,o.position,o.mass);
+    this.gravity.add(g);
+    o.gravity.add(g.scale(-1));
     return;
   } else if(o instanceof physicsApp.Observer) {
       return;
   }
   throw new Error("Invalid object type");
 }
-
 
 physicsApp.SimpleMassObject.prototype.tickForward = function(t) {
   var acceleration = this.gravity.scale((1.0/this.mass));
@@ -35,5 +36,4 @@ physicsApp.SimpleMassObject.prototype.tickForward = function(t) {
   this.forward = this.forward.plus(dSpeed);
   this.position = this.position.plus(dPosition);
   this.gravity.reset();
-
 }

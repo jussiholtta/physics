@@ -6,6 +6,10 @@ physicsApp.Entity = function(x,y,z,a,b,c) {
   this.forward = new physicsApp.Vector(a,b,c);
 };
 
+physicsApp.Entity.prototype.tickForward = function() {
+  //virtual void
+}
+
 physicsApp.Entity.prototype.moveForward = function() {
   this.position = this.position.plus(this.forward);
 }

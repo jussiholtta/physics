@@ -17,24 +17,26 @@ describe("physicsApp.Gravity", function() {
     });
   
     it("can calculate force", function() {
-      gravity.add(point,1,point2,4);
-      expect(gravity.length()).toEqual(1);
+      var g = gravity.calculate(point,1,point2,4);
+      expect(g.length()).toEqual(1);
     });
 
     it("is 0 if one item is massless", function() {
-      gravity.add(point,1,point2,0);
-      expect(gravity.length()).toEqual(0);
+      var g = gravity.calculate(point,1,point2,0);
+      expect(g.length()).toEqual(0);
     });
 
     it("can add multiple force sources", function() {
-      gravity.add(point,1,point2,4);
-      gravity.add(point,1,point2,6);
+      var g1 = gravity.calculate(point,1,point2,4);
+      var g2 = gravity.calculate(point,1,point2,6);
+      gravity.add(g1,g2);
       expect(gravity.length()).toEqual(2.5);
     });
 
     it("resets to 0", function() {
-      gravity.add(point,1,point2,4);
-      gravity.add(point,1,point2,6);
+      var g1 = gravity.calculate(point,1,point2,4);
+      var g2 = gravity.calculate(point,1,point2,6);
+      gravity.add(g1,g2);
       expect(gravity.length()).toEqual(2.5);
       gravity.reset(); 
       expect(gravity.length()).toEqual(0);

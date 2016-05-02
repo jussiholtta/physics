@@ -24,6 +24,18 @@ describe("physicsApp.SimpleMassObject", function() {
       expect(simpleMassObject.gravity).toEqual(expectedGravity);
     });
 
+    it("can't touch without being touched", function() {
+      var smo2 = new physicsApp.SimpleMassObject(0,0,0,0,0,1,1);
+      simpleMassObject.applyForce(smo2);
+      var expectedGravity = new physicsApp.Gravity();
+      expectedGravity.a = 0;
+      expectedGravity.b = 0;
+      expectedGravity.c = 1/100;
+      expect(simpleMassObject.gravity).toEqual(expectedGravity);
+      expectedGravity.c = -1/100;
+      expect(smo2.gravity).toEqual(expectedGravity);
+    });
+
     it("checks the type of the object use when applying force", function() {
       expect(function () {simpleMassObject.applyForce(234)}).toThrow(new Error("Invalid object type"));
     });

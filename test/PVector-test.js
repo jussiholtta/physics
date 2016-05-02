@@ -93,5 +93,9 @@ describe("physicsApp.PVector", function() {
     it("is able to scale vectors", function() {
       expect(vector.scale(2)).toEqual(new physicsApp.Vector(2,4,4));
     });
+
+    it("isn't changed if scaled by 1", function() {
+      expect(vector.scale(1)).toEqual(new physicsApp.Vector(1,2,2));
+    });
     
 });

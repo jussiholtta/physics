@@ -56,5 +56,8 @@ Press tab to list possible options.
 > yes
 
 
+npm install karma-phantomjs-launcher --save-dev
+npm install jasmine-core phantomjs-prebuilt --save-dev
+
 
 karma start physics.conf.js --log-level debug --single-run
